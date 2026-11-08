@@ -1,58 +1,58 @@
-# SkyCast-CLI
-A free Python weather CLI powered by Open-Meteo API.
-🌦️ SkyCast CLI
+🌦️ SkyCast Android
 
-A modern, free and open-source weather tool for developers.
+A modern, open-source Android weather application powered by Open-Meteo.
 
-SkyCast CLI is a Python-based weather application powered by the Open-Meteo API. It provides weather information and forecasts directly from your terminal.
+SkyCast is a weather application designed to provide useful weather information through a clean, modern Android interface.
 
 ✨ Features
 
-- 🌡️ Current weather conditions
 - 🌍 Search weather by city
+- 🌡️ Current weather conditions
 - 📅 7-day weather forecast
 - 💨 Wind speed information
-- 💧 Humidity information
-- 🌧️ Precipitation data
-- 📊 Weather statistics
-- ⚡ Fast API requests
-- 🔄 Data caching
+- 💧 Humidity details
+- 🌧️ Precipitation information
+- 🎨 Modern Material 3 interface
+- ⚡ Free weather API integration
 
-🛠️ Technologies
+🛠️ Built With
 
-- Python
+- Kotlin
+- Jetpack Compose
+- Material 3
 - Open-Meteo API
-- REST API
-- JSON
+- Android SDK
 
-🌐 API
+🌐 Weather API
 
-SkyCast CLI uses the free "Open-Meteo API" (https://open-meteo.com/).
+SkyCast uses the free "Open-Meteo API" (https://open-meteo.com/).
 
 No API key required.
 
-📦 Installation
+📱 Screenshots
 
-Installation instructions coming soon.
+Coming soon.
 
-🚀 Usage
+🚀 Installation
 
-Usage instructions coming soon.
+APK builds and installation instructions will be available soon.
 
 🗺️ Roadmap
 
-- [ ] Weather API integration
-- [ ] City search
-- [ ] Current weather display
+- [ ] Android project setup
+- [ ] Open-Meteo API integration
+- [ ] City search and geocoding
+- [ ] Current weather screen
 - [ ] 7-day forecast
-- [ ] Interactive terminal interface
-- [ ] Weather statistics
-- [ ] Configuration system
-- [ ] Automated tests
+- [ ] Material 3 UI
+- [ ] Weather icons
+- [ ] Dark mode
+- [ ] GitHub Actions APK builds
+- [ ] App testing and optimization
 
 🤝 Contributing
 
-Contributions, ideas and bug reports are welcome!
+Contributions, suggestions and bug reports are welcome!
 
 📄 License
 
@@ -60,4 +60,4 @@ This project is licensed under the MIT License.
 
 ---
 
-Made with Python ❤️
+Made with Kotlin ❤️
