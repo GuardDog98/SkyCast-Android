@@ -8,9 +8,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -21,116 +22,159 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            SkyCastApp()
+            SkyCastScreen()
         }
     }
 }
 
 @Composable
-fun SkyCastApp() {
-    var city by remember { mutableStateOf("Baku") }
+fun SkyCastScreen() {
+    val blue = Color(0xFF2196F3)
 
-    val background = Color(0xFF101827)
-    val card = Color(0xFF1D2B40)
-    val accent = Color(0xFF64B5F6)
-
-    MaterialTheme {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF1565C0),
+                        Color(0xFF42A5F5),
+                        Color(0xFFE3F2FD)
+                    )
+                )
+            )
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(background)
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(35.dp))
-
-            Text(
-                text = "🌦️ SkyCast",
-                color = Color.White,
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold
-            )
-
-            Text(
-                text = "Your weather, beautifully presented",
-                color = Color.LightGray,
-                fontSize = 14.sp
-            )
-
-            Spacer(modifier = Modifier.height(35.dp))
-
-            OutlinedTextField(
-                value = city,
-                onValueChange = { city = it },
-                label = { Text("Search city") },
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth()
-            )
 
             Spacer(modifier = Modifier.height(25.dp))
 
+            Text(
+                text = "SkyCast",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+
+            Text(
+                text = "Your weather companion",
+                fontSize = 14.sp,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Text(
+                text = "Baku, Azerbaijan",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            Text(
+                text = "☀️",
+                fontSize = 90.sp
+            )
+
+            Text(
+                text = "24°",
+                fontSize = 75.sp,
+                fontWeight = FontWeight.Light,
+                color = Color.White
+            )
+
+            Text(
+                text = "Sunny",
+                fontSize = 23.sp,
+                color = Color.White
+            )
+
+            Spacer(modifier = Modifier.height(35.dp))
+
             Card(
                 modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(24.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = card
-                ),
-                shape = RoundedCornerShape(24.dp)
+                    containerColor = Color.White.copy(alpha = 0.9f)
+                )
             ) {
-                Column(
-                    modifier = Modifier.padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Text(
-                        text = city,
-                        color = Color.White,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Text(
-                        text = "☀️",
-                        fontSize = 64.sp
-                    )
-
-                    Text(
-                        text = "--°C",
-                        color = Color.White,
-                        fontSize = 52.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Text(
-                        text = "Weather data loading soon",
-                        color = accent,
-                        fontSize = 14.sp
-                    )
+                    WeatherInfo("💧", "Humidity", "45%")
+                    WeatherInfo("💨", "Wind", "12 km/h")
+                    WeatherInfo("🌡️", "Feels like", "25°")
                 }
             }
 
             Spacer(modifier = Modifier.height(25.dp))
 
             Text(
-                text = "Weather forecast",
-                color = Color.White,
-                fontSize = 21.sp,
+                text = "7-Day Forecast",
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.align(Alignment.Start)
+                color = Color.White
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            Text(
-                text = "7-day forecast will appear here.",
-                color = Color.LightGray
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Text(
-                text = "Powered by Open-Meteo API",
-                color = Color.Gray,
-                fontSize = 12.sp
-            )
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White.copy(alpha = 0.9f)
+                )
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    ForecastRow("Monday", "☀️", "24°")
+                    ForecastRow("Tuesday", "⛅", "22°")
+                    ForecastRow("Wednesday", "🌧️", "19°")
+                    ForecastRow("Thursday", "☀️", "25°")
+                    ForecastRow("Friday", "⛅", "23°")
+                }
+            }
         }
+    }
+}
+
+@Composable
+fun WeatherInfo(icon: String, title: String, value: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(icon, fontSize = 25.sp)
+        Text(title, fontSize = 11.sp, color = Color.Gray)
+        Text(
+            value,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.DarkGray
+        )
+    }
+}
+
+@Composable
+fun ForecastRow(day: String, icon: String, temperature: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(day, color = Color.DarkGray, fontSize = 15.sp)
+        Text(icon, fontSize = 20.sp)
+        Text(
+            temperature,
+            color = Color.DarkGray,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
