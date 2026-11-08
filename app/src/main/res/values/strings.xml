@@ -1,0 +1,11 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SkyCast</string>
+    <string name="app_tagline">Your weather companion</string>
+    <string name="search_city">Search city</string>
+    <string name="current_weather">Current Weather</string>
+    <string name="weather_forecast">7-Day Forecast</string>
+    <string name="loading">Loading weather data...</string>
+    <string name="network_error">Unable to connect to weather service</string>
+</resources>
