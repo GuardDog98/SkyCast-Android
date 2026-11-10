@@ -39,16 +39,16 @@ APK builds and installation instructions will be available soon.
 
 🗺️ Roadmap
 
-- [ ] Android project setup
-- [ ] Open-Meteo API integration
-- [ ] City search and geocoding
-- [ ] Current weather screen
-- [ ] 7-day forecast
-- [ ] Material 3 UI
-- [ ] Weather icons
-- [ ] Dark mode
-- [ ] GitHub Actions APK builds
-- [ ] App testing and optimization
+- [x] Android project setup
+- [x] Open-Meteo API integration
+- [x] City search and geocoding
+- [x] Current weather screen
+- [x] 7-day forecast
+- [x] Material 3 UI
+- [x] Weather icons
+- [x] Dark mode
+- [x] GitHub Actions APK builds
+- [x] App testing and optimization
 
 🤝 Contributing
 
